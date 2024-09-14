@@ -16,7 +16,8 @@
 
 #pragma once
 
-SPLIT_KEYBOARD = yes
+#define SPLIT_KEYBOARD
+#define SPLIT_TRANSPORT_MIRROR
 
 // make the right board the master
 // #define MASTER_RIGHT
