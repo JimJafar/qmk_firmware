@@ -17,7 +17,7 @@
 #pragma once
 
 // make the right board the master
-#define MASTER_LEFT
+#define MASTER_RIGHT
 
 #ifdef RGBLIGHT_ENABLE
 #    define RGBLIGHT_ANIMATIONS
