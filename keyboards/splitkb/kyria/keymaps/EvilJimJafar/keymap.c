@@ -26,6 +26,8 @@ enum layers {
     _WIN,
 };
 
+// make the right board the master
+#define MASTER_RIGHT
 
 // Aliases for readability
 #define QWERTY   DF(_QWERTY)
