@@ -18,6 +18,8 @@
 
 #define SPLIT_OLED_ENABLE
 
+#define SPLIT_OLED_ENABLE
+
 #ifdef RGBLIGHT_ENABLE
 #    define RGBLIGHT_ANIMATIONS
 #    define RGBLIGHT_HUE_STEP  8
