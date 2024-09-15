@@ -16,11 +16,6 @@
 
 #pragma once
 
-#define SPLIT_TRANSPORT_MIRROR
-
-// make the right board the master
-// #define MASTER_RIGHT
-
 #define SPLIT_OLED_ENABLE
 
 #ifdef RGBLIGHT_ENABLE
