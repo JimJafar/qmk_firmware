@@ -39,18 +39,21 @@ enum layers {
 
 #define CTL_ESC  MT(MOD_LCTL, KC_ESC)
 #define CTL_QUOT MT(MOD_RCTL, KC_QUOTE)
-#define CTL_TAB MT(MOD_RCTL, KC_TAB)
+#define CTL_TAB  MT(MOD_RCTL, KC_TAB)
 #define CTL_MINS MT(MOD_RCTL, KC_MINUS)
 #define ALT_ENT  MT(MOD_LALT, KC_ENT)
-#define GBP      MT(MOD_LALT, KC_3)
+#define BSP_SHFT MT(MOD_LSFT, KC_BSPC)
+#define SPC_SHFT MT(MOD_LSFT, KC_SPC)
+
+#define GBP      LALT(KC_3)
 
 // Raycast window shortcuts
-#define RW_SCR LCTL(LGUI(KC_U)) // next screen
-#define RW_LH LCTL(LGUI(KC_J)) // left half
-#define RW_MAX LCTL(LGUI(KC_K)) // maximize
-#define RW_RH LCTL(LGUI(KC_SCLN)) // right half
-#define RW_BH LCTL(LGUI(KC_M)) // bottom half
-#define RW_TH LCTL(LGUI(KC_N)) // top half
+#define RW_SCR   LCTL(LGUI(KC_U)) // next screen
+#define RW_LH    LCTL(LGUI(KC_J)) // left half
+#define RW_MAX   LCTL(LGUI(KC_K)) // maximize
+#define RW_RH    LCTL(LGUI(KC_SCLN)) // right half
+#define RW_BH    LCTL(LGUI(KC_M)) // bottom half
+#define RW_TH    LCTL(LGUI(KC_N)) // top half
 
 // Note: LAlt/Enter (ALT_ENT) is not the same thing as the keyboard shortcut Alt+Enter.
 // The notation `mod/tap` denotes a key that activates the modifier `mod` when held down, and
