@@ -55,6 +55,11 @@ enum layers {
 #define RW_BH    LCTL(LGUI(KC_M)) // bottom half
 #define RW_TH    LCTL(LGUI(KC_N)) // top half
 
+const uint16_t PROGMEM combo_cmd_esc[] = {LGUI, KC_ESC, COMBO_END};
+combo_t key_combos[] = {
+    COMBO(combo_cmd_esc, LGUI(KC_GRV)),
+};
+
 // Note: LAlt/Enter (ALT_ENT) is not the same thing as the keyboard shortcut Alt+Enter.
 // The notation `mod/tap` denotes a key that activates the modifier `mod` when held down, and
 // produces the key `tap` when tapped (i.e. pressed and released).
