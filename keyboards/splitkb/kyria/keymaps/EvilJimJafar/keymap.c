@@ -55,7 +55,7 @@ enum layers {
 #define RW_BH    LCTL(LGUI(KC_M)) // bottom half
 #define RW_TH    LCTL(LGUI(KC_N)) // top half
 
-const uint16_t PROGMEM combo_cmd_esc[] = {LGUI, KC_ESC, COMBO_END};
+const uint16_t PROGMEM combo_cmd_esc[] = {KC_LGUI, KC_ESC, COMBO_END};
 combo_t key_combos[] = {
     COMBO(combo_cmd_esc, LGUI(KC_GRV)),
 };
