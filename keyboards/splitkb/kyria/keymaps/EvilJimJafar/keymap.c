@@ -45,6 +45,16 @@ enum layers {
 #define BSP_SHFT MT(MOD_LSFT, KC_BSPC)
 #define SPC_SHFT MT(MOD_LSFT, KC_SPC)
 
+// home row mods
+#define C_A      MT(MOD_LCTL, KC_A)
+#define A_S      MT(MOD_LALT, KC_S)
+#define G_D      MT(MOD_LGUI, KC_D)
+#define S_F      MT(MOD_LSFT, KC_F)
+#define S_J      MT(MOD_LSFT, KC_J)
+#define G_K      MT(MOD_LGUI, KC_K)
+#define A_L      MT(MOD_LALT, KC_L)
+#define C_SCLN   MT(MOD_RCTL, KC_SCLN)
+
 #define GBP      LALT(KC_3)
 
 // Raycast window shortcuts
@@ -76,15 +86,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
  * | LShift |   Z  |   X  |   C  |   V  |   B  | [ {  | Win  |  |F-keys|  ] } |   N  |   M  | ,  < | . >  | /  ? | RShift |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
- *                        | LAlt | LGUI | Bksp | Enter| Nav  |  | Sym  | Enter| Space| RGUI | AltGr|
- *                        |      |      | Shift|      |      |  |      |      | Shift|      |      |
+ *                        |      |      | Space| Bksp | Nav  |  | Sym  | Enter| Space|      |      |
+ *                        |      |      |      |      |      |  |      |      |      |      |      |
  *                        `----------------------------------'  `----------------------------------'
  */
     [_QWERTY] = LAYOUT(
-     KC_ESC  , KC_Q ,  KC_W   ,  KC_E  ,   KC_R ,   KC_T ,                                        KC_Y,   KC_U   ,  KC_I ,   KC_O ,  KC_P ,  KC_GRV,
-     CTL_TAB , KC_A ,  KC_S   ,  KC_D  ,   KC_F ,   KC_G ,                                        KC_H,   KC_J   ,  KC_K ,   KC_L ,KC_SCLN,KC_QUOTE,
-     KC_LSFT , KC_Z ,  KC_X   ,  KC_C  ,   KC_V ,   KC_B , KC_LBRC,  WIN  ,     FKEYS  , KC_RBRC, KC_N,   KC_M   ,KC_COMM, KC_DOT ,KC_SLSH, KC_RSFT,
-                                KC_LALT, KC_LGUI,BSP_SHFT,  KC_ENT,  NAV  ,     SYM    , KC_ENT ,SPC_SHFT,KC_RGUI,KC_RALT
+     KC_ESC  , KC_Q ,  KC_W   ,  KC_E  ,   KC_R ,   KC_T ,                                         KC_Y , KC_U   ,  KC_I ,   KC_O ,  KC_P ,  KC_GRV,
+     CTL_TAB , C_A  ,  A_S    ,  G_D   ,   S_F  ,   KC_G ,                                         KC_H , S_J    ,  G_K  ,   A_L  , C_SCLN,KC_QUOTE,
+     KC_LSFT , KC_Z ,  KC_X   ,  KC_C  ,   KC_V ,   KC_B , KC_LBRC,  WIN  ,     FKEYS  , KC_RBRC,  KC_N , KC_M   ,KC_COMM, KC_DOT ,KC_SLSH, KC_RSFT,
+                                _______, _______, KC_SPC ,  KC_ENT,  NAV  ,     SYM    , KC_ENT , KC_SPC, _______, _______
     ),
 
 /*
