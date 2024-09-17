@@ -17,13 +17,13 @@
 
 enum layers {
     _QWERTY = 0,
-    // _DVORAK,
-    // _COLEMAK_DH,
     _NAV,
     _CODE,
     _NUM,
-    // _ADJUST,
     _WIN,
+    // _DVORAK,
+    // _COLEMAK_DH,
+    // _ADJUST,
 };
 
 // Aliases for readability
@@ -98,7 +98,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
  * | LShift |   Z  |   X  |   C  |   V  |   B  | [ {  | Win  |  |F-keys|  ] } |   N  |   M  | ,  < | . >  | /  ? | RShift |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
- *                        | Caps | Win  | Space| Bksp | Nav  |  | Num  | Enter| Space| Code |      |
+ *                        | Caps | Win  | Space| Bksp | Code |  | Num  | Enter| Space| Nav  |      |
  *                        |      |      |      |      |      |  |      |      |      |      |      |
  *                        `----------------------------------'  `----------------------------------'
  */
@@ -106,7 +106,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      KC_ESC  , KC_Q ,  KC_W   ,  KC_E  ,   KC_R ,   KC_T ,                                         KC_Y , KC_U   ,  KC_I ,   KC_O ,  KC_P ,  KC_GRV,
      CTL_TAB , C_A  ,  A_S    ,  G_D   ,   S_F  ,   KC_G ,                                         KC_H , S_J    ,  G_K  ,   A_L  , C_SCLN,KC_QUOTE,
      KC_LSFT , KC_Z ,  KC_X   ,  KC_C  ,   KC_V ,   KC_B , KC_LBRC,  WIN  ,     CODE   , KC_RBRC,  KC_N , KC_M   ,KC_COMM, KC_DOT ,KC_SLSH, KC_RSFT,
-                                KC_CAPS,   WIN  , KC_BSPC, KC_ENT ,  NAV  ,     NUM    , KC_ENT , KC_SPC, CODE   , _______
+                                KC_CAPS,   WIN  , KC_BSPC, KC_ENT ,  CODE ,     NUM    , KC_ENT , KC_SPC, NAV    , _______
     ),
 
 
@@ -294,7 +294,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * DO NOT edit the rev1.c file; instead override the weakly defined default functions by your own.
  */
 
-/* DELETE THIS LINE TO UNCOMMENT (1/2)
 #ifdef OLED_ENABLE
 oled_rotation_t oled_init_user(oled_rotation_t rotation) { return OLED_ROTATION_180; }
 
@@ -317,24 +316,33 @@ bool oled_task_user(void) {
             case _QWERTY:
                 oled_write_P(PSTR("QWERTY\n"), false);
                 break;
-            case _DVORAK:
-                oled_write_P(PSTR("Dvorak\n"), false);
-                break;
-            case _COLEMAK_DH:
-                oled_write_P(PSTR("Colemak-DH\n"), false);
-                break;
             case _NAV:
                 oled_write_P(PSTR("Nav\n"), false);
                 break;
-            case _SYM:
-                oled_write_P(PSTR("Sym\n"), false);
+            case _CODE:
+                oled_write_P(PSTR("Code\n"), false);
                 break;
-            case _FUNCTION:
-                oled_write_P(PSTR("Function\n"), false);
+            case _NUM:
+                oled_write_P(PSTR("Num\n"), false);
                 break;
-            case _ADJUST:
-                oled_write_P(PSTR("Adjust\n"), false);
+            case _WIN:
+                oled_write_P(PSTR("Win\n"), false);
                 break;
+            // case _DVORAK:
+            //     oled_write_P(PSTR("Dvorak\n"), false);
+            //     break;
+            // case _COLEMAK_DH:
+            //     oled_write_P(PSTR("Colemak-DH\n"), false);
+            //     break;
+            // case _SYM:
+            //     oled_write_P(PSTR("Sym\n"), false);
+            //     break;
+            // case _FUNCTION:
+            //     oled_write_P(PSTR("Function\n"), false);
+            //     break;
+            // case _ADJUST:
+            //     oled_write_P(PSTR("Adjust\n"), false);
+            //     break;
             default:
                 oled_write_P(PSTR("Undefined\n"), false);
         }
@@ -362,6 +370,8 @@ bool oled_task_user(void) {
     return false;
 }
 #endif
+
+/* DELETE THIS LINE TO UNCOMMENT (1/2)
 
 #ifdef ENCODER_ENABLE
 bool encoder_update_user(uint8_t index, bool clockwise) {
