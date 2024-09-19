@@ -56,16 +56,17 @@ enum layers {
 #define C_SCLN   MT(MOD_RCTL, KC_SCLN)
 
 // symbols
-#define SHFT_1   LALT(KC_1)
-#define SHFT_2   LALT(KC_2)
-#define SHFT_3   LALT(KC_3)
-#define SHFT_4   LALT(KC_4)
-#define SHFT_5   LALT(KC_5)
-#define SHFT_6   LALT(KC_6)
-#define SHFT_7   LALT(KC_7)
-#define SHFT_8   LALT(KC_8)
-#define SHFT_9   LALT(KC_9)
-#define SHFT_0   LALT(KC_0)
+#define SHFT_1   LSFT(KC_1)
+#define SHFT_2   LSFT(KC_2)
+#define SHFT_3   LSFT(KC_3)
+#define SHFT_4   LSFT(KC_4)
+#define SHFT_5   LSFT(KC_5)
+#define SHFT_6   LSFT(KC_6)
+#define SHFT_7   LSFT(KC_7)
+#define SHFT_8   LSFT(KC_8)
+#define SHFT_9   LSFT(KC_9)
+#define SHFT_0   LSFT(KC_0)
+#define UNDRSCR  LSFT(KC_MINS)
 
 #define GBP      LALT(KC_3)
 
@@ -98,7 +99,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
  * | LShift |   Z  |   X  |   C  |   V  |   B  | [ {  | Win  |  |F-keys|  ] } |   N  |   M  | ,  < | . >  | /  ? | RShift |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
- *                        | Caps | Win  | Space| Bksp | Code |  | Num  | Enter| Space| Nav  |      |
+ *                        | Caps | Nav  | Space| Bksp | Code |  | Num  | Enter| Space| Win  |      |
  *                        |      |      |      |      |      |  |      |      |      |      |      |
  *                        `----------------------------------'  `----------------------------------'
  */
@@ -106,7 +107,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      KC_ESC  , KC_Q ,  KC_W   ,  KC_E  ,   KC_R ,   KC_T ,                                         KC_Y , KC_U   ,  KC_I ,   KC_O ,  KC_P ,  KC_GRV,
      CTL_TAB , C_A  ,  A_S    ,  G_D   ,   S_F  ,   KC_G ,                                         KC_H , S_J    ,  G_K  ,   A_L  , C_SCLN,KC_QUOTE,
      KC_LSFT , KC_Z ,  KC_X   ,  KC_C  ,   KC_V ,   KC_B , KC_LBRC,  WIN  ,     CODE   , KC_RBRC,  KC_N , KC_M   ,KC_COMM, KC_DOT ,KC_SLSH, KC_RSFT,
-                                KC_CAPS,   WIN  , KC_BSPC, KC_ENT ,  CODE ,     NUM    , KC_ENT , KC_SPC, NAV    , _______
+                                KC_CAPS,   NAV  , KC_BSPC, KC_ENT ,  CODE ,     NUM    , KC_ENT , KC_SPC, WIN    , _______
     ),
 
 
@@ -179,7 +180,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * Code
  *
  * ,-------------------------------------------.                              ,-------------------------------------------.
- * |        |      |      |      |      |      |                              |      |      |      |      |      |        |
+ * |    ^   |  $   |  @   |  _   |  #   |      |                              |      |  &   |  +   |  -   |  *   |   %    |
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
  * |        |  {   |  (   |  [   |  <   |  \   |                              |   /  |  >   |  ]   |  )   |  }   |        |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
@@ -190,7 +191,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                        `----------------------------------'  `----------------------------------'
  */
     [_CODE] = LAYOUT(
-      _______, _______, _______, _______, _______, _______,                                     _______, _______, _______, _______, _______, _______,
+       SHFT_6,  SHFT_4,  SHFT_2, UNDRSCR,  SHFT_3, _______,                                     _______,  SHFT_8, KC_PLUS,KC_MINUS, KC_MPLY,  SHFT_5,
       _______, KC_LCBR, KC_LPRN, KC_LBRC, KC_LABK, KC_BSLS,                                     KC_SLSH, KC_RABK, KC_RBRC, KC_RPRN, KC_RCBR, _______,
       _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
                                  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
