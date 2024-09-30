@@ -45,12 +45,15 @@ enum layers {
 #define BSP_SHFT MT(MOD_LSFT, KC_BSPC)
 #define SPC_SHFT MT(MOD_LSFT, KC_SPC)
 
+#define SPC_NUM  LT(_NUM,  KC_SPC)
+#define SPC_CODE LT(_CODE, KC_SPC)
+
 // home row mods
 #define C_A      MT(MOD_LCTL, KC_A)
 #define A_S      MT(MOD_LALT, KC_S)
 #define G_D      MT(MOD_LGUI, KC_D)
 #define S_F      MT(MOD_LSFT, KC_F)
-#define S_J      MT(MOD_LSFT, KC_J)
+#define S_J      MT(MOD_RSFT, KC_J)
 #define G_K      MT(MOD_LGUI, KC_K)
 #define A_L      MT(MOD_LALT, KC_L)
 #define C_SCLN   MT(MOD_RCTL, KC_SCLN)
@@ -105,17 +108,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
  * |Ctrl/Tab|   A  |   S  |   D  |   F  |   G  |                              |   H  |   J  |   K  |   L  | ;  : |  '  "  |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * | LShift |   Z  |   X  |   C  |   V  |   B  | [ {  | Win  |  |F-keys|  ] } |   N  |   M  | ,  < | . >  | /  ? | RShift |
+ * | LShift |   Z  |   X  |   C  |   V  |   B  | [ {  | Win  |  |F-keys|  ] } |   N  |   M  | ,  < | . >  | /  ? |    -   |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
- *                        | Caps | Nav  | Space| Bksp | Code |  | Num  | Enter| Space| Win  |      |
- *                        |      |      |      |      |      |  |      |      |      |      |      |
+ *                        |      |      | Space| Nav  | Bksp |  | Enter| Win  | Space|      |      |
+ *                        |      |      | Num  |      |      |  |      |      | Code |      |      |
  *                        `----------------------------------'  `----------------------------------'
  */
     [_QWERTY] = LAYOUT(
-     KC_ESC  , KC_Q ,  KC_W   ,  KC_E  ,   KC_R ,   KC_T ,                                         KC_Y , KC_U   ,  KC_I ,   KC_O ,  KC_P ,  KC_GRV,
-     CTL_TAB , C_A  ,  A_S    ,  G_D   ,   S_F  ,   KC_G ,                                         KC_H , S_J    ,  G_K  ,   A_L  , C_SCLN,KC_QUOTE,
-     KC_LSFT , KC_Z ,  KC_X   ,  KC_C  ,   KC_V ,   KC_B , KC_LBRC,  WIN  ,     CODE   , KC_RBRC,  KC_N , KC_M   ,KC_COMM, KC_DOT ,KC_SLSH, KC_RSFT,
-                                KC_CAPS,   NAV  , KC_BSPC, KC_ENT ,  CODE ,     NUM    , KC_ENT , KC_SPC, WIN    , _______
+     KC_ESC  , KC_Q ,  KC_W   ,  KC_E  ,   KC_R ,   KC_T ,                                          KC_Y , KC_U   ,  KC_I ,   KC_O ,  KC_P ,  KC_GRV,
+     CTL_TAB , C_A  ,  A_S    ,  G_D   ,   S_F  ,   KC_G ,                                          KC_H , S_J    ,  G_K  ,   A_L  , C_SCLN,KC_QUOTE,
+     KC_LSFT , KC_Z ,  KC_X   ,  KC_C  ,   KC_V ,   KC_B , KC_LBRC,  WIN  ,     CODE   , KC_RBRC,   KC_N , KC_M   ,KC_COMM, KC_DOT ,KC_SLSH, KC_MINUS,
+                                _______, _______, SPC_NUM, NAV    ,KC_BSPC,     KC_ENT , WIN    ,SPC_CODE, _______, _______
     ),
 
 
