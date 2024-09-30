@@ -110,15 +110,15 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
  * | LShift |   Z  |   X  |   C  |   V  |   B  | [ {  | Win  |  |F-keys|  ] } |   N  |   M  | ,  < | . >  | /  ? |    -   |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
- *                        |      |      | Space| Nav  | Bksp |  | Enter| Win  | Space|      |      |
- *                        |      |      | Num  |      |      |  |      |      | Code |      |      |
+ *                        |      |      | Nav  | Space| Bksp |  | Enter| Space| Win  |      |      |
+ *                        |      |      |      | Num  |      |  |      | Code |      |      |      |
  *                        `----------------------------------'  `----------------------------------'
  */
     [_QWERTY] = LAYOUT(
      KC_ESC  , KC_Q ,  KC_W   ,  KC_E  ,   KC_R ,   KC_T ,                                          KC_Y , KC_U   ,  KC_I ,   KC_O ,  KC_P ,  KC_GRV,
      CTL_TAB , C_A  ,  A_S    ,  G_D   ,   S_F  ,   KC_G ,                                          KC_H , S_J    ,  G_K  ,   A_L  , C_SCLN,KC_QUOTE,
      KC_LSFT , KC_Z ,  KC_X   ,  KC_C  ,   KC_V ,   KC_B , KC_LBRC,  WIN  ,     CODE   , KC_RBRC,   KC_N , KC_M   ,KC_COMM, KC_DOT ,KC_SLSH, KC_MINUS,
-                                _______, _______, SPC_NUM, NAV    ,KC_BSPC,     KC_ENT , WIN    ,SPC_CODE, _______, _______
+                                _______, _______,   NAV  , SPC_NUM,KC_BSPC,     KC_ENT ,SPC_CODE,   WIN  , _______, _______
     ),
 
 
