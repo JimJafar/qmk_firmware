@@ -52,6 +52,7 @@ enum layers {
 #define BSP_SHFT MT(MOD_LSFT, KC_BSPC)
 #define SPC_SHFT MT(MOD_LSFT, KC_SPC)
 
+// layers
 #define SPC_NUM  LT(_NUM,  KC_SPC)
 #define SPC_CODE LT(_CODE, KC_SPC)
 
@@ -78,7 +79,9 @@ enum layers {
 #define SHFT_0   LSFT(KC_0)
 #define UNDRSCR  LSFT(KC_MINS)
 
-#define GBP      LALT(KC_3)
+// special
+#define LOCK_SCRN LCTL(LSFT(KC_Q))
+#define GBP       LALT(KC_3)
 
 // Raycast window shortcuts
 #define RW_SCR   LCTL(LGUI(KC_U)) // next screen
@@ -88,9 +91,18 @@ enum layers {
 #define RW_BH    LCTL(LGUI(KC_M)) // bottom half
 #define RW_TH    LCTL(LGUI(KC_N)) // top half
 
+// Combos / chords
+enum combos {
+    CMD_ESC,
+    CMD_BSPC,
+};
+
 const uint16_t PROGMEM combo_cmd_esc[] = {KC_LGUI, KC_ESC, COMBO_END};
-combo_t key_combos[] = {
-    COMBO(combo_cmd_esc, LGUI(KC_GRV)),
+const uint16_t PROGMEM combo_cmd_bspc[] = {KC_LGUI, KC_BSPC, COMBO_END};
+
+combo_t key_combos[COMBO_COUNT] = {
+    [CMD_ESC] = COMBO(combo_cmd_esc, LGUI(KC_GRV)),
+    [CMD_BSPC] = COMBO(combo_cmd_bspc, LGUI(KC_ENT)),
 };
 
 // Raycast window shortcuts
@@ -133,9 +145,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * Nav Layer: Media, navigation
  *
  * ,-------------------------------------------.                              ,-------------------------------------------.
- * |        |      |      |      |      | VolUp|                              | PgUp | Home |      | End  |      | Delete |
+ * |        |      |      |      |      | VolUp|                              | PgUp | Home |      |      | End  | Delete |
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * |        |  GUI |  Alt | Ctrl | Shift| VolDn|                              | PgDn |  ←   |   ↑  |   ↓  |   →  | Insert |
+ * |        |      |      |      |      | VolDn|                              | PgDn |  ←   |   ↑  |   ↓  |   →  | Insert |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
  * |        |      |      |      |      |      |      |ScLck |  |      |      | Pause|M Prev|M Play|M Next|VolMut| PrtSc  |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
