@@ -39,7 +39,7 @@ enum layers {
 #define NAV      MO(_NAV)
 #define WIN      MO(_WIN)
 #define CODE     MO(_CODE)
-#define MOUSE    LT(_MOUSE)
+#define MOUSE    TG(_MOUSE)
 // #define ADJUST   MO(_ADJUST)
 // #define COLEMAK  DF(_COLEMAK_DH)
 // #define DVORAK   DF(_DVORAK)
