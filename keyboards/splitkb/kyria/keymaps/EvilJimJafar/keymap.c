@@ -15,10 +15,9 @@
  */
 
 /*
- * TODO:
- * - left-CMD + Esc -> CMD + `
- * - left-CMD + Backspace -> Enter
-*/
+ TODO:
+ - 
+ */
 
 #include QMK_KEYBOARD_H
 
@@ -34,17 +33,16 @@ enum layers {
     // _ADJUST,
 };
 
-// Aliases for readability
+// Layer aliases for readability
 #define QWERTY   DF(_QWERTY)
-// #define COLEMAK  DF(_COLEMAK_DH)
-// #define DVORAK   DF(_DVORAK)
-
 #define NUM      MO(_NUM)
 #define NAV      MO(_NAV)
-#define ADJUST   MO(_ADJUST)
 #define WIN      MO(_WIN)
 #define CODE     MO(_CODE)
-#define MOUSE    MO(_MOUSE)
+#define MOUSE    LT(_MOUSE)
+// #define ADJUST   MO(_ADJUST)
+// #define COLEMAK  DF(_COLEMAK_DH)
+// #define DVORAK   DF(_DVORAK)
 
 #define CTL_ESC  MT(MOD_LCTL, KC_ESC)
 #define CTL_QUOT MT(MOD_RCTL, KC_QUOTE)
@@ -131,7 +129,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      KC_ESC  , KC_Q ,  KC_W   ,  KC_E  ,   KC_R ,   KC_T ,                                          KC_Y , KC_U   ,  KC_I ,   KC_O ,  KC_P ,  KC_GRV,
      CTL_TAB , C_A  ,  A_S    ,  G_D   ,   S_F  ,   KC_G ,                                          KC_H , S_J    ,  G_K  ,   A_L  , C_SCLN,KC_QUOTE,
      KC_LSFT , KC_Z ,  KC_X   ,  KC_C  ,   KC_V ,   KC_B , KC_LBRC,  WIN  ,     CODE   , KC_RBRC,   KC_N , KC_M   ,KC_COMM, KC_DOT ,KC_SLSH, KC_MINUS,
-                              TG(MOUSE), _______,   NAV  , SPC_NUM,KC_BSPC,     KC_ENT ,SPC_CODE,   WIN  , _______, _______
+                                 MOUSE , _______,   NAV  , SPC_NUM,KC_BSPC,     KC_ENT ,SPC_CODE,   WIN  , _______, _______
     ),
 
 
@@ -175,7 +173,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______, _______, _______, _______, _______, _______,                                     _______, MS_WHLL, MS_WHLU, MS_WHLD, MS_WHLR, _______,
       _______, _______, MS_BTN3, MS_BTN2, MS_BTN1, _______,                                     _______, MS_LEFT, MS_UP  , MS_DOWN, MS_RGHT, _______,
       _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-                               TG(MOUSE), _______, _______, _______, _______, _______, _______, _______, _______, _______
+                                  MOUSE , _______, _______, _______, _______, _______, _______, _______, _______, _______
     ),
 
 
@@ -356,7 +354,7 @@ bool oled_task_user(void) {
         // clang-format on
 
         oled_write_P(qmk_logo, false);
-        oled_write_P(PSTR("Kyria rev1.0\n\n"), false);
+        oled_write_P(PSTR("Kyria rev2.0\n\n"), false);
 
         // Host Keyboard Layer Status
         oled_write_P(PSTR("Layer: "), false);
@@ -375,6 +373,9 @@ bool oled_task_user(void) {
                 break;
             case _WIN:
                 oled_write_P(PSTR("Win\n"), false);
+                break;
+            case _MOUSE:
+                oled_write_P(PSTR("Mouse\n"), false);
                 break;
             // case _DVORAK:
             //     oled_write_P(PSTR("Dvorak\n"), false);
