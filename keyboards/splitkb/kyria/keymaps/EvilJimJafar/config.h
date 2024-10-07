@@ -36,9 +36,8 @@
 // Home row mods
 // https://www.reddit.com/r/ErgoMechKeyboards/comments/tiejpp/comment/i1e7tjm/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
 // https://precondition.github.io/home-row-mods
-#define TAPPING_TERM 200  // ms to trigger tap                                                                                                                                           
-#define IGNORE_MOD_TAP_INTERRUPT
-#define PERMISSIVE_HOLD 
+#define TAPPING_TERM 200  // ms to trigger tap
+#define PERMISSIVE_HOLD
 
 // RGB
 #ifdef RGBLIGHT_ENABLE
