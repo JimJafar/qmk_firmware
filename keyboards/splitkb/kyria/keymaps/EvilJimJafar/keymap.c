@@ -28,6 +28,7 @@ enum layers {
     _CODE,
     _NUM,
     _WIN,
+    _MOUSE,
     // _DVORAK,
     // _COLEMAK_DH,
     // _ADJUST,
@@ -43,6 +44,7 @@ enum layers {
 #define ADJUST   MO(_ADJUST)
 #define WIN      MO(_WIN)
 #define CODE     MO(_CODE)
+#define MOUSE    MO(_MOUSE)
 
 #define CTL_ESC  MT(MOD_LCTL, KC_ESC)
 #define CTL_QUOT MT(MOD_RCTL, KC_QUOTE)
@@ -129,7 +131,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      KC_ESC  , KC_Q ,  KC_W   ,  KC_E  ,   KC_R ,   KC_T ,                                          KC_Y , KC_U   ,  KC_I ,   KC_O ,  KC_P ,  KC_GRV,
      CTL_TAB , C_A  ,  A_S    ,  G_D   ,   S_F  ,   KC_G ,                                          KC_H , S_J    ,  G_K  ,   A_L  , C_SCLN,KC_QUOTE,
      KC_LSFT , KC_Z ,  KC_X   ,  KC_C  ,   KC_V ,   KC_B , KC_LBRC,  WIN  ,     CODE   , KC_RBRC,   KC_N , KC_M   ,KC_COMM, KC_DOT ,KC_SLSH, KC_MINUS,
-                                _______, _______,   NAV  , SPC_NUM,KC_BSPC,     KC_ENT ,SPC_CODE,   WIN  , _______, _______
+                              TG(MOUSE), _______,   NAV  , SPC_NUM,KC_BSPC,     KC_ENT ,SPC_CODE,   WIN  , _______, _______
     ),
 
 
@@ -149,10 +151,33 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
     [_NAV] = LAYOUT(
       _______, _______, _______, _______, _______, KC_VOLU,                                     KC_PGUP, KC_HOME, _______, _______, KC_END , KC_DEL,
-      _______, _______, _______, _______, _______, KC_VOLD,                                     KC_PGDN, KC_LEFT, KC_UP,   KC_DOWN, KC_RGHT, KC_INS,
+      _______, _______, _______, _______, _______, KC_VOLD,                                     KC_PGDN, KC_LEFT, KC_UP  , KC_DOWN, KC_RGHT, KC_INS,
       _______, _______, _______, _______, _______, _______, _______, KC_SCRL, _______, _______,KC_PAUSE, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_PSCR,
                                  _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
     ),
+
+
+/*
+ * Mouse Layer
+ *
+ * ,-------------------------------------------.                              ,-------------------------------------------.
+ * |        |      |      |      |      |      |                              |      |      |      |      |      |        |
+ * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
+ * |        |      |      |      |      |      |                              |      |  ←   |   ↑  |   ↓  |   →  |        |
+ * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
+ * |        |      |      |      |      |      |      |      |  |      |      |      |      |      |      |      |        |
+ * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
+ *                        |      |      |      |      |      |  |      |      |      |      |      |
+ *                        |      |      |      |      |      |  |      |      |      |      |      |
+ *                        `----------------------------------'  `----------------------------------'
+ */
+    [_MOUSE] = LAYOUT(
+      _______, _______, _______, _______, _______, _______,                                     _______, MS_WHLL, MS_WHLU, MS_WHLD, MS_WHLR, _______,
+      _______, _______, MS_BTN3, MS_BTN2, MS_BTN1, _______,                                     _______, MS_LEFT, MS_UP  , MS_DOWN, MS_RGHT, _______,
+      _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
+                               TG(MOUSE), _______, _______, _______, _______, _______, _______, _______, _______, _______
+    ),
+
 
 /*
  * Num Layer: Numbers and symbols
