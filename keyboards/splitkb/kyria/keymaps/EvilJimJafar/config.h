@@ -17,8 +17,9 @@
 #pragma once
 
 #define SPLIT_OLED_ENABLE
-
 #define BOTH_SHIFTS_TURNS_ON_CAPS_WORD
+#define FORCE_NKRO
+#define COMBO_COUNT 2
 
 #ifdef RGBLIGHT_ENABLE
 #    define RGBLIGHT_ANIMATIONS
