@@ -18,7 +18,7 @@
 
 #define SPLIT_OLED_ENABLE
 
-#define SPLIT_OLED_ENABLE
+#define COMBO_COUNT 2
 
 // Mouse key speed and acceleration.
 #undef MOUSEKEY_DELAY

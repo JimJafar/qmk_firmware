@@ -57,14 +57,14 @@ enum layers {
 #define SPC_CODE LT(_CODE, KC_SPC)
 
 // home row mods
-#define C_A      MT(MOD_LCTL, KC_A)
-#define A_S      MT(MOD_LALT, KC_S)
-#define G_D      MT(MOD_LGUI, KC_D)
-#define S_F      MT(MOD_LSFT, KC_F)
-#define S_J      MT(MOD_RSFT, KC_J)
-#define G_K      MT(MOD_RGUI, KC_K)
-#define A_L      MT(MOD_RALT, KC_L)
-#define C_SCLN   MT(MOD_RCTL, KC_SCLN)
+#define C_A      LCTL_T(KC_A)
+#define A_S      LALT_T(KC_S)
+#define G_D      LGUI_T(KC_D)
+#define S_F      LSFT_T(KC_F)
+#define S_J      RSFT_T(KC_J)
+#define G_K      RGUI_T(KC_K)
+#define A_L      RALT_T(KC_L)
+#define C_SCLN   RCTL_T(KC_SCLN)
 
 // symbols
 #define SHFT_1   LSFT(KC_1)
@@ -94,24 +94,16 @@ enum layers {
 // Combos / chords
 enum combos {
     CMD_ESC,
-    CMD_BSPC,
+    CMD_SHIFT_BSPC,
 };
 
-const uint16_t PROGMEM combo_cmd_esc[] = {KC_LGUI, KC_ESC, COMBO_END};
-const uint16_t PROGMEM combo_cmd_bspc[] = {KC_LGUI, KC_BSPC, COMBO_END};
+const uint16_t PROGMEM combo_cmd_esc[] = {LGUI_T(KC_D), KC_ESC, COMBO_END};
+const uint16_t PROGMEM combo_cmd_shift_bspc[] = {LGUI_T(KC_D), LSFT_T(KC_F), KC_BSPC, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
     [CMD_ESC] = COMBO(combo_cmd_esc, LGUI(KC_GRV)),
-    [CMD_BSPC] = COMBO(combo_cmd_bspc, KC_ENT),
+    [CMD_SHIFT_BSPC] = COMBO(combo_cmd_shift_bspc, KC_ENT),
 };
-
-// Raycast window shortcuts
-#define RW_SCR   LCTL(LGUI(KC_U)) // next screen
-#define RW_LH    LCTL(LGUI(KC_J)) // left half
-#define RW_MAX   LCTL(LGUI(KC_K)) // maximize
-#define RW_RH    LCTL(LGUI(KC_SCLN)) // right half
-#define RW_BH    LCTL(LGUI(KC_M)) // bottom half
-#define RW_TH    LCTL(LGUI(KC_N)) // top half
 
 // Note: LAlt/Enter (ALT_ENT) is not the same thing as the keyboard shortcut Alt+Enter.
 // The notation `mod/tap` denotes a key that activates the modifier `mod` when held down, and

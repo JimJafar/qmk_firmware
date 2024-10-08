@@ -5,5 +5,5 @@ ENCODER_ENABLE = no       # Enables the use of one or more encoders
 RGBLIGHT_ENABLE = no      # Enable keyboard RGB underglow
 CAPS_WORD_ENABLE = yes
 FORCE_NKRO = yes
-COMBO_ENABLE = yes
 MOUSEKEY_ENABLE = yes
+BOTH_SHIFTS_TURNS_ON_CAPS_WORD = yes
