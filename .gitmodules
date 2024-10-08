@@ -17,3 +17,9 @@
 	path = lib/lvgl
 	url = https://github.com/qmk/lvgl.git
 	branch = release/v8.2
+[submodule "lib/chibios-contrib"]
+	path = lib/chibios-contrib
+	url = https://github.com/qmk/ChibiOS-Contrib
+[submodule "lib/chibios"]
+	path = lib/chibios
+	url = https://github.com/qmk/ChibiOS
