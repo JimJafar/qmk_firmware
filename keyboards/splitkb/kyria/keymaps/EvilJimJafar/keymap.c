@@ -57,14 +57,14 @@ enum layers {
 #define SPC_CODE LT(_CODE, KC_SPC)
 
 // home row mods
-#define C_A      MT(MOD_LCTL, KC_A)
-#define A_S      MT(MOD_LALT, KC_S)
-#define G_D      MT(MOD_LGUI, KC_D)
-#define S_F      MT(MOD_LSFT, KC_F)
-#define S_J      MT(MOD_RSFT, KC_J)
-#define G_K      MT(MOD_LGUI, KC_K)
-#define A_L      MT(MOD_LALT, KC_L)
-#define C_SCLN   MT(MOD_RCTL, KC_SCLN)
+#define C_A      LCTL_T(KC_A)
+#define A_S      LALT_T(KC_S)
+#define G_D      LGUI_T(KC_D)
+#define S_F      LSFT_T(KC_F)
+#define S_J      RSFT_T(KC_J)
+#define G_K      RGUI_T(KC_K)
+#define A_L      RALT_T(KC_L)
+#define C_SCLN   RCTL_T(KC_SCLN)
 
 // symbols
 #define SHFT_1   LSFT(KC_1)
@@ -91,18 +91,17 @@ enum layers {
 #define RW_BH    LCTL(LGUI(KC_M)) // bottom half
 #define RW_TH    LCTL(LGUI(KC_N)) // top half
 
-// Combos / chords
-enum combos {
-    CMD_ESC,
-    CMD_BSPC,
+//Tap Dance Declarations
+enum {
+  TD_ESC_TG = 0,
+  TD_GRV_TLD = 1,
 };
 
-const uint16_t PROGMEM combo_cmd_esc[] = {KC_LGUI, KC_ESC, COMBO_END};
-const uint16_t PROGMEM combo_cmd_bspc[] = {KC_LGUI, KC_BSPC, COMBO_END};
-
-combo_t key_combos[COMBO_COUNT] = {
-    [CMD_ESC] = COMBO(combo_cmd_esc, LGUI(KC_GRV)),
-    [CMD_BSPC] = COMBO(combo_cmd_bspc, LGUI(KC_ENT)),
+//Tap Dance Definitions
+tap_dance_action_t tap_dance_actions[] = {
+  //Tap once for Esc, twice for Caps Lock
+  [TD_ESC_TG]  = ACTION_TAP_DANCE_DOUBLE(KC_ESC, LGUI(KC_GRV)),
+  [TD_GRV_TLD]  = ACTION_TAP_DANCE_DOUBLE(KC_GRV, KC_TILD),
 };
 
 // Note: LAlt/Enter (ALT_ENT) is not the same thing as the keyboard shortcut Alt+Enter.
@@ -115,21 +114,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * Base Layer: QWERTY
  *
  * ,-------------------------------------------.                              ,-------------------------------------------.
- * |  Esc   |   Q  |   W  |   E  |   R  |   T  |                              |   Y  |   U  |   I  |   O  |   P  |    `   |
+ * |Esc/Caps|   Q  |   W  |   E  |   R  |   T  |                              |   Y  |   U  |   I  |   O  |   P  |    `   |
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
  * |Ctrl/Tab|   A  |   S  |   D  |   F  |   G  |                              |   H  |   J  |   K  |   L  | ;  : |  '  "  |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
  * | LShift |   Z  |   X  |   C  |   V  |   B  | [ {  | Win  |  |F-keys|  ] } |   N  |   M  | ,  < | . >  | /  ? |    -   |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
- *                        |      |      | Nav  | Space| Bksp |  | Enter| Space| Win  |      |      |
+ *                        |Mouse |      | Nav  | Space| Bksp |  | Enter| Space| Win  |      | Caps |
  *                        |      |      |      | Num  |      |  |      | Code |      |      |      |
  *                        `----------------------------------'  `----------------------------------'
  */
     [_QWERTY] = LAYOUT(
-     KC_ESC  , KC_Q ,  KC_W   ,  KC_E  ,   KC_R ,   KC_T ,                                          KC_Y , KC_U   ,  KC_I ,   KC_O ,  KC_P ,  KC_GRV,
-     CTL_TAB , C_A  ,  A_S    ,  G_D   ,   S_F  ,   KC_G ,                                          KC_H , S_J    ,  G_K  ,   A_L  , C_SCLN,KC_QUOTE,
-     KC_LSFT , KC_Z ,  KC_X   ,  KC_C  ,   KC_V ,   KC_B , KC_LBRC,  WIN  ,     CODE   , KC_RBRC,   KC_N , KC_M   ,KC_COMM, KC_DOT ,KC_SLSH, KC_MINUS,
-                                 MOUSE , _______,   NAV  , SPC_NUM,KC_BSPC,     KC_ENT ,SPC_CODE,   WIN  , _______, _______
+     TD(TD_ESC_TG), KC_Q ,  KC_W   ,  KC_E  ,   KC_R ,   KC_T ,                                          KC_Y , KC_U   ,  KC_I ,   KC_O ,  KC_P ,  TD(TD_GRV_TLD),
+     CTL_TAB      , C_A  ,  A_S    ,  G_D   ,   S_F  ,   KC_G ,                                          KC_H , S_J    ,  G_K  ,   A_L  , C_SCLN, KC_QUOTE,
+     KC_LSFT      , KC_Z ,  KC_X   ,  KC_C  ,   KC_V ,   KC_B , KC_LBRC,  WIN  ,     CODE   , KC_RBRC,   KC_N , KC_M   ,KC_COMM, KC_DOT ,KC_SLSH, KC_MINUS,
+                                      MOUSE , _______,   NAV  , SPC_NUM,KC_BSPC,     KC_ENT ,SPC_CODE,   WIN  , _______, KC_CAPS
     ),
 
 
@@ -159,13 +158,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * Mouse Layer
  *
  * ,-------------------------------------------.                              ,-------------------------------------------.
- * |        |      |      |      |      |      |                              |      |      |      |      |      |        |
+ * |        |      |      |      |      |      |                              |      |  W ← | W ↑  | W ↓  | W →  |        |
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
- * |        |      |      |      |      |      |                              |      |  ←   |   ↑  |   ↓  |   →  |        |
+ * |        |      |      | M-Clk| R-Clk| L-Clk|                              |      |  ←   |   ↑  |   ↓  |   →  |        |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
  * |        |      |      |      |      |      |      |      |  |      |      |      |      |      |      |      |        |
  * `----------------------+------+------+------+------+------|  |------+------+------+------+------+----------------------'
- *                        |      |      |      |      |      |  |      |      |      |      |      |
+ *                        |Qwerty|      |      | R-Clk| L-Clk|  |      |      |      |      |      |
  *                        |      |      |      |      |      |  |      |      |      |      |      |
  *                        `----------------------------------'  `----------------------------------'
  */
@@ -173,7 +172,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______, _______, _______, _______, _______, _______,                                     _______, MS_WHLL, MS_WHLU, MS_WHLD, MS_WHLR, _______,
       _______, _______, MS_BTN3, MS_BTN2, MS_BTN1, _______,                                     _______, MS_LEFT, MS_UP  , MS_DOWN, MS_RGHT, _______,
       _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______,
-                                  MOUSE , _______, _______, _______, _______, _______, _______, _______, _______, _______
+                                  MOUSE , _______, _______, MS_BTN2, MS_BTN1, _______, _______, _______, _______, _______
     ),
 
 
