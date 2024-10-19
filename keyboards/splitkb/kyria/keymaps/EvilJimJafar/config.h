@@ -34,8 +34,16 @@
 // Home row mods
 // https://www.reddit.com/r/ErgoMechKeyboards/comments/tiejpp/comment/i1e7tjm/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
 // https://precondition.github.io/home-row-mods
-#define TAPPING_TERM 200  // ms to trigger tap
-#define PERMISSIVE_HOLD
+
+#define TAPPING_TERM 175
+
+// PERMISSIVE_HOLD can be useful if you have a very high tapping term. 
+// If you have a lower tapping term, PERMISSIVE_HOLD generally produces many misfires 
+// unless you’re very consistent in your typing style so it is not recommended.
+// #define PERMISSIVE_HOLD
+
+// Enable rapid switch from tap to hold, disables double tap hold auto-repeat.
+#define QUICK_TAP_TERM 0
 
 // RGB
 #ifdef RGBLIGHT_ENABLE
