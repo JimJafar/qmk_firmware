@@ -36,6 +36,7 @@
 // https://precondition.github.io/home-row-mods
 
 #define TAPPING_TERM 175
+#define TAPPING_TERM_PER_KEY
 
 // PERMISSIVE_HOLD can be useful if you have a very high tapping term. 
 // If you have a lower tapping term, PERMISSIVE_HOLD generally produces many misfires 

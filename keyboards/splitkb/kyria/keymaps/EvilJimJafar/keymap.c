@@ -36,7 +36,7 @@ enum layers {
 // Layer aliases for readability
 #define QWERTY   DF(_QWERTY)
 #define NUM      MO(_NUM)
-#define NAV      MO(_NAV)
+#define NAV      TG(_NAV)
 #define WIN      MO(_WIN)
 #define CODE     MO(_CODE)
 #define MOUSE    TG(_MOUSE)
@@ -99,10 +99,25 @@ enum {
 
 //Tap Dance Definitions
 tap_dance_action_t tap_dance_actions[] = {
-  //Tap once for Esc, twice for Caps Lock
+  //Tap once for Esc, twice for CMD+`
   [TD_ESC_TG]  = ACTION_TAP_DANCE_DOUBLE(KC_ESC, LGUI(KC_GRV)),
+  // Tap once for grave, twice for tilde
   [TD_GRV_TLD]  = ACTION_TAP_DANCE_DOUBLE(KC_GRV, KC_TILD),
 };
+
+uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
+  switch (keycode) {
+    // longer tapping term for non-shift home row mods to reduce accidental activation
+    case LCTL_T(KC_A):
+    case LALT_T(KC_S):
+    case LGUI_T(KC_D):
+    case RGUI_T(KC_K):
+    case RALT_T(KC_L):
+    case RCTL_T(KC_SCLN):
+      return 250;
+    default:
+      return TAPPING_TERM;
+}}
 
 // Note: LAlt/Enter (ALT_ENT) is not the same thing as the keyboard shortcut Alt+Enter.
 // The notation `mod/tap` denotes a key that activates the modifier `mod` when held down, and
@@ -125,10 +140,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  *                        `----------------------------------'  `----------------------------------'
  */
     [_QWERTY] = LAYOUT(
-     TD(TD_ESC_TG), KC_Q ,  KC_W   ,  KC_E  ,   KC_R ,   KC_T ,                                          KC_Y , KC_U   ,  KC_I ,   KC_O ,  KC_P ,  TD(TD_GRV_TLD),
-     CTL_TAB      , C_A  ,  A_S    ,  G_D   ,   S_F  ,   KC_G ,                                          KC_H , S_J    ,  G_K  ,   A_L  , C_SCLN, KC_QUOTE,
-     KC_LSFT      , KC_Z ,  KC_X   ,  KC_C  ,   KC_V ,   KC_B , KC_LBRC,  WIN  ,     CODE   , KC_RBRC,   KC_N , KC_M   ,KC_COMM, KC_DOT ,KC_SLSH, KC_MINUS,
-                                      MOUSE , _______,   NAV  , SPC_NUM,KC_BSPC,     KC_ENT ,SPC_CODE,   WIN  , _______, KC_CAPS
+     TD(TD_ESC_TG), KC_Q ,  KC_W   ,  KC_E  ,   KC_R , KC_T  ,                                          KC_Y , KC_U   ,  KC_I ,   KC_O ,  KC_P ,  TD(TD_GRV_TLD),
+     CTL_TAB      , C_A  ,  A_S    ,  G_D   ,   S_F  , KC_G  ,                                          KC_H , S_J    ,  G_K  ,   A_L  , C_SCLN, KC_QUOTE,
+     KC_LSFT      , KC_Z ,  KC_X   ,  KC_C  ,   KC_V , KC_B  , KC_LBRC,  WIN  ,     CODE   , KC_RBRC,   KC_N , KC_M   ,KC_COMM, KC_DOT ,KC_SLSH, KC_MINUS,
+                                      MOUSE , _______, NAV   , SPC_NUM,KC_BSPC,     KC_ENT ,SPC_CODE,   WIN  , _______, KC_CAPS
     ),
 
 
@@ -150,7 +165,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       _______, _______, _______, _______, _______, KC_VOLU,                                     KC_PGUP, KC_HOME, MS_WHLD, MS_WHLU, KC_END , KC_DEL,
       _______, _______, _______, _______, _______, KC_VOLD,                                     KC_PGDN, KC_LEFT, KC_UP  , KC_DOWN, KC_RGHT, KC_INS,
       _______, _______, _______, _______, _______, _______, _______, KC_SCRL, _______, _______,KC_PAUSE, KC_MPRV, KC_MPLY, KC_MNXT, KC_MUTE, KC_PSCR,
-                                 _______, _______, _______, _______, _______, _______, _______, _______, _______, _______
+                                 _______,TG(_NAV), _______, _______, _______, _______, _______, _______, _______, _______
     ),
 
 
