@@ -35,7 +35,7 @@
 // https://www.reddit.com/r/ErgoMechKeyboards/comments/tiejpp/comment/i1e7tjm/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
 // https://precondition.github.io/home-row-mods
 
-#define TAPPING_TERM 175
+#define TAPPING_TERM 200
 #define TAPPING_TERM_PER_KEY
 
 // PERMISSIVE_HOLD can be useful if you have a very high tapping term. 
@@ -45,6 +45,9 @@
 
 // Enable rapid switch from tap to hold, disables double tap hold auto-repeat.
 #define QUICK_TAP_TERM 0
+
+// When using TT(_LAYET), double tap to toggle the layer or hold to momentarily activate it.
+#define TAPPING_TOGGLE 2
 
 // RGB
 #ifdef RGBLIGHT_ENABLE

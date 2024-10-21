@@ -36,7 +36,7 @@ enum layers {
 // Layer aliases for readability
 #define QWERTY   DF(_QWERTY)
 #define NUM      MO(_NUM)
-#define NAV      TG(_NAV)
+#define NAV      TT(_NAV) // double tap to toggle, hold to momentarily activate
 #define WIN      MO(_WIN)
 #define CODE     MO(_CODE)
 #define MOUSE    TG(_MOUSE)
@@ -114,7 +114,7 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     case RGUI_T(KC_K):
     case RALT_T(KC_L):
     case RCTL_T(KC_SCLN):
-      return 250;
+      return 220;
     default:
       return TAPPING_TERM;
 }}
